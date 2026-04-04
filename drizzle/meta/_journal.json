@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1775323410677,
+      "tag": "0000_tearful_master_mold",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1775323588236,
+      "tag": "0001_material_random",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1775327824549,
+      "tag": "0002_rapid_shiva",
+      "breakpoints": true
+    }
+  ]
+}

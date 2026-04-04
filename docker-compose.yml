@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=mysql://bluvinsta_user:${MYSQL_PASSWORD}@mysql:3306/bluvinsta
+      - JWT_SECRET=${JWT_SECRET}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - S3_BUCKET=${S3_BUCKET}
+      - PORT=3000
+    depends_on:
+      - mysql
+    restart: always
+    networks:
+      - bluvinsta-network
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=bluvinsta
+      - MYSQL_USER=bluvinsta_user
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: always
+    networks:
+      - bluvinsta-network
+
+volumes:
+  mysql_data:
+
+networks:
+  bluvinsta-network:
+    driver: bridge
